@@ -1,0 +1,34 @@
+ATTENTION :
+---------
+si besoin de changer le mot de passe pour la commande "useradd" du Dockerfile, il faut utiliser la commande suivante pour générer le mot de passe crypté :
+
+openssl passwd -crypt motDePasseACripter
+
+inscription red hat :
+-------------------
+subscription-manager register --username fwedoz --password Fred6580 --auto-attach
+
+ID : 0795db51-9746-4f88-ab60-b7227670f4d7
+
+============================================================================================================================================
+
+lister les connexions :
+---------------------
+docker network ls
+
+créer une connexion :
+-------------------
+docker network create --subnet=172.30.0.0/16 host_u5
+
+construire l'image à partir du Dockerfile :
+-----------------------------------------
+docker build -t epromo_u5 .
+
+lancer container depuis connexion et Dockerfile :
+-----------------------------------------------
+docker run -p 9999:80 --name epromo_u5 --network=host_u5 -i -t epromo_u5
+
+
+lancement et test du container :
+------------------------------
+docker run --name epromo_u5 --network=host_u5 -i -t epromo_u5 cat /etc/redhat-release

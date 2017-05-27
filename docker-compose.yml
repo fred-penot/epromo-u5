@@ -1,0 +1,6 @@
+app:
+  image: fedora:latest
+  net: "host_u5"
+  ports:
+    - 9999:80
+  tty: true
