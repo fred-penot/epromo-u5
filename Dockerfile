@@ -25,3 +25,5 @@ EXPOSE 22 80
 USER docker
 
 WORKDIR /home/docker
+
+CMD /bin/bash
