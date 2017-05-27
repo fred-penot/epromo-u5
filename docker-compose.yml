@@ -1,5 +1,5 @@
 app:
-  image: fedora:latest
+  image: fwed/epromo-u5:latest
   net: "host_u5"
   ports:
     - 9999:80
