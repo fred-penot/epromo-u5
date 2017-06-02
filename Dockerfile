@@ -1,4 +1,4 @@
-# Apache 2.4.10 sur Red Hat 
+# Apache 2.4.10 sur Fedora 
 #
 # VERSION               0.0.1
 #
@@ -10,14 +10,23 @@ MAINTAINER Fwedoz "fwedoz@gmail.com"
 ENV login_ssh="docker"
 ENV password_ssh="docker"
 
+# Mise a jour des depots
+RUN dnf repolist all
+
+# Mise a jour systeme
+RUN dnf update
+
+# Installation du serveur SSH et de wget
+RUN dnf install openssh-server.x86_64 htop grep procps-ng
+
 # Ajout utilisateur "${login_ssh}"
-RUN useradd docker -p WIcpSebTtMFGw -s /bin/bash -d /home/docker 
+RUN useradd docker -p PKm7oZRGZQbwY -s /bin/bash -d /home/docker 
 
 # Modification du mot de passe root
 RUN echo "root:docker" | chpasswd
 
-# installation paquet
-# RUN yum install wget
+# lancement de ssh a chaque demarrage
+RUN systemctl enable sshd.service
 
 # Ports
 EXPOSE 22 80
@@ -25,5 +34,3 @@ EXPOSE 22 80
 USER docker
 
 WORKDIR /home/docker
-
-CMD /bin/bash
