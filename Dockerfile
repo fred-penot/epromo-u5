@@ -14,10 +14,10 @@ ENV password_ssh="docker"
 RUN dnf repolist all
 
 # Mise a jour systeme
-RUN dnf update
+RUN dnf -y update
 
 # Installation du serveur SSH et de wget
-RUN dnf install openssh-server.x86_64 htop grep procps-ng
+RUN dnf -y install openssh-server.x86_64 htop grep procps-ng
 
 # Ajout utilisateur "${login_ssh}"
 RUN useradd docker -p PKm7oZRGZQbwY -s /bin/bash -d /home/docker 
