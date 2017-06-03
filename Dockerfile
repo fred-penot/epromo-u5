@@ -34,5 +34,3 @@ EXPOSE 22 80
 USER docker
 
 WORKDIR /home/docker
-
-ENTRYPOINT ["/bin/bash"]
